@@ -10,14 +10,22 @@ public class Car {
     @Column(name = "car_id")
     private Long id;
 
-    @Column(name = "model", unique = true)
+    @Column(name = "model")
     private String model;
 
-    @Column(name = "series", unique = true)
+    @Column(name = "series")
     private int series;
 
-    @OneToOne(mappedBy = "car")
-    private User user;
+    @Column(name = "user_id")
+    private Long userId;
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
 
     public Car() {
     }
@@ -43,21 +51,12 @@ public class Car {
         this.series = series;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
     @Override
     public String toString() {
         return "Car{" +
-//                "id=" + id +
-                ", model='" + model + '\'' +
+                "model='" + model + '\'' +
                 ", series=" + series +
-                ", user=" + user.getFirstName() +
+                ", userId=" + userId +
                 '}';
     }
 }
